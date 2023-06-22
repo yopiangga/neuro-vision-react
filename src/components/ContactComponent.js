@@ -71,7 +71,7 @@ export function ContactComponent() {
           <div className="header-title text-center">
             <h2 className="text-4xl font-medium">Lokasi kami</h2>
             <p className="text-sm mt-5 text-gray-600">
-              Untuk Dukungan Pelanggan dan Pertanyaan, Hubungi kami.
+              Untuk dukungan Pelanggan dan pertanyaan, hubungi kami.
             </p>
           </div>
 
@@ -81,7 +81,7 @@ export function ContactComponent() {
                 <FiMapPin size={36} />
               </div>
               <div>
-                <h2 className="text-xl font-medium mb-3">ATRA Indonesia</h2>
+                <h2 className="text-xl font-medium mb-3">Stroke Vision</h2>
                 <a
                   className="text-lg"
                   href="https://goo.gl/maps/rKmsvQXbLxtU36BRA"
@@ -99,7 +99,7 @@ export function ContactComponent() {
                 <FiPhone size={36} />
               </div>
               <div>
-                <h2 className="text-xl font-medium mb-3">Telephone</h2>
+                <h2 className="text-xl font-medium mb-3">Telepon</h2>
                 <a className="text-lg" href="https://wa.me/6282330410865">
                   +62 823-3041-0865
                 </a>
@@ -110,9 +110,12 @@ export function ContactComponent() {
                 <FiMail size={36} />
               </div>
               <div>
-                <h2 className="text-xl font-medium mb-3">Busines Email</h2>
-                <a className="text-lg" href="mailto:info@myatra.net">
-                  info@myatra.net
+                <h2 className="text-xl font-medium mb-3">Email</h2>
+                <a
+                  className="text-lg"
+                  href="mailto:yopiangga@it.student.pens.ac.id"
+                >
+                  yopiangga@it.student.pens.ac.id
                 </a>
               </div>
             </div>

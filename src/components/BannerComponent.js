@@ -13,11 +13,12 @@ export function BannerComponent({ pathDownload, action }) {
         <div className="flex banner_content flex-col lg:flex-row">
           <div className="lg:w-3/4 w-full flex flex-col justify-center">
             <h2 className="text-6xl font-semibold">
-              Raih Mimpimu <br /> Bersama ATRA{" "}
+              Digitalisasi CT Scan & <br /> Klasifikasi Stroke <br />
+              Otomatis
             </h2>
             <p className="mt-5 lg:w-96 font-light text-sm">
-              APLIKASI BACA BUKU BERBASIS AI UNTUK MEMBANTU PENYANDANG TUNANETRA
-              DALAM MEMBACA
+              Maju Bersama Mencapai SDGs dengan Platform Canggih untuk CT Scan
+              dan Klasifikasi Stroke Otomatis
             </p>
             <a
               href={pathDownload}

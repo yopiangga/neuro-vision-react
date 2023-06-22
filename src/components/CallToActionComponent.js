@@ -13,18 +13,18 @@ export function CallToActionComponent({ pathDownload, action }) {
       <div className="w-10/12 pt-16 pb-10 grid lg:grid-cols-2 grid-cols-1">
         <div className="text">
           <h2 className="text-4xl font-medium">
-            Anda dapat mempresentasikan aplikasi Anda. Semuanya sangat mudah!
+            Apa yang dapat dilakukan oleh Stroke Vision?
           </h2>
           <p className="mt-7 text-sm text-slate-600">
             Aplikasi teknologi berbasis Artificial Intelligence (AI) yang dapat
-            digunakan untuk membantu penyandang tunanetra low vision dalam
-            membaca teks. Aisoru diharapkan dapat membantu para penyandang
-            tunanetra low vision.
+            digunakan untuk membantu tenaga medis dalam mengidentifikasi pasien
+            stroke saat ahli radiologi tidak ada, serta memberikan masukan
+            kepada ahli radiologi terkait penyakit stroke yang dialami pasien.
           </p>
           <p className="mt-7 text-sm text-slate-600">
-            Diharapkan dapat membantu penyandang tunanetra low vision dalam
-            membaca buku dan dapat memajukan pendidikan di Indonesia secara
-            merata.
+            Diharapkan dapat membantu meningkatkan kualitas pelayanan kesehatan
+            dan mengurangi angka kematian akibat stroke untuk mencapai SDGs di
+            bidang kesehatan.
           </p>
           <a
             href={pathDownload}
@@ -44,7 +44,8 @@ export function CallToActionComponent({ pathDownload, action }) {
           className="h-96 w-full rounded-2xl overflow-hidden flex justify-center items-center"
           style={{ backgroundImage: `url(${video1})`, backgroundSize: "cover" }}
         >
-          <a href="https://youtu.be/qQq6awhAcSI" target="_blank">
+          <a href="" target="_blank">
+            {/* <a href="https://youtu.be/2ZujHa0Z_ik" target="_blank"> */}
             <img src={videoIcon1} className="hover:cursor-pointer" />
           </a>
         </div>

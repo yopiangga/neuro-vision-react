@@ -51,8 +51,8 @@ export function ScreenshotComponent() {
         <div className="header-title text-center">
           <h2 className="text-4xl font-medium">Layar Aplikasi</h2>
           <p className="text-sm mt-5 text-gray-600">
-            Anda dapat melihat aplikasi pratinjau Anda di sini. Sangat mudah
-            digunakan!
+            Anda dapat melihat tampilan aplikasi Stroke Vision di sini. Sangat
+            mudah digunakan!
           </p>
         </div>
 

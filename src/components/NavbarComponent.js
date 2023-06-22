@@ -33,7 +33,9 @@ export function NavbarComponentDefault() {
     <nav className="fixed z-40 lg:h-20 h-16 w-full bg-gradient-to-r from-purple-600 via-purple-600 to-indigo-600 flex justify-center shadow-lg">
       <div className="w-11/12 h-full flex justify-between items-center text-white">
         <div className="logo">
-          <h1 className="text-xl font-bold">ATRA | Aplikasi Seluler</h1>
+          <h1 className="text-xl font-bold">
+            Stroke Vision | Aplikasi Seluler
+          </h1>
         </div>
         <div className="menu lg:block hidden">
           <ul className="uppercase flex text-sm gap-8 font-medium">

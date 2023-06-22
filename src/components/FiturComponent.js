@@ -9,29 +9,29 @@ export function FiturComponent() {
         <div className="header-title text-center">
           <h2 className="text-4xl font-medium">Fitur Aplikasi</h2>
           <p className="text-sm mt-5 text-gray-600">
-            Anda dapat mempresentasikan aplikasi Anda. Semuanya sangat mudah!
+            Anda dapat menggunakannya secara mudah dan nyaman
           </p>
         </div>
         <div className="fitur-content mt-16 grid lg:grid-cols-4 grid-cols-1 gap-8">
           <CardFitur
             icon={<BiScan size={28} color="white" />}
-            title="Pemindaian"
-            description="Anda dapat menangkap gambar dan mendapatkan teks juga hasil audio."
+            title="Klasfikasi Otomatis"
+            description="Sistem dapat melakukan klasifikasi otomatis dengan AI untuk memprediksikan stroke"
           />
           <CardFitur
             icon={<BiHistory size={28} color="white" />}
-            title="Riwayat Dokumen"
-            description="Ini menghitung berapa banyak proses yang Anda lakukan"
+            title="Riwayat CT Scan"
+            description="Dokter dan Anda dapat melihat riwayat CT Scan Anda dengan mudah dan cepat"
           />
           <CardFitur
             icon={<RiArticleLine size={28} color="white" />}
-            title="Artikel Informatif"
-            description="Beberapa artikel tentang low vision dan orang tuna netra"
+            title="Rekomendasi RS"
+            description="Sistem akan memberikan rekomendasi rumah sakit terdekat untuk Anda"
           />
           <CardFitur
             icon={<HiDocumentText size={28} color="white" />}
-            title="Rincian Dokumen"
-            description="Semua dokumen Anda disimpan dengan baik di sini"
+            title="Rincian Klasifikasi"
+            description="Melihat rincian klasifikasi stroke Anda dengan mudah dan cepat"
           />
         </div>
       </div>
