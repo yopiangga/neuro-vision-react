@@ -63,7 +63,7 @@ export function ScreenshotComponent() {
             <Slider {...settings} slidesToShow={4}>
               {bgList.map((el, idx) => {
                 return (
-                  <div key={idx} className="w-48 px-4">
+                  <div key={idx} className="">
                     <img src={el.image} />
                   </div>
                 );
@@ -74,7 +74,7 @@ export function ScreenshotComponent() {
             <Slider {...settings} slidesToShow={1}>
               {bgList.map((el, idx) => {
                 return (
-                  <div key={idx} className="w-48 px-4">
+                  <div key={idx} className="">
                     <img
                       src={el.image}
                       layout="responsive"

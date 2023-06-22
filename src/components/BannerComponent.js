@@ -12,7 +12,7 @@ export function BannerComponent({ pathDownload, action }) {
       <div className="w-10/12 h-full top-0 bottom-0 my-32 ">
         <div className="flex banner_content flex-col lg:flex-row">
           <div className="lg:w-3/4 w-full flex flex-col justify-center">
-            <h2 className="text-6xl font-semibold">
+            <h2 className="lg:text-6xl text-3xl font-semibold">
               Digitalisasi CT Scan & <br /> Klasifikasi Stroke <br />
               Otomatis
             </h2>

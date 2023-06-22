@@ -21,7 +21,7 @@ export function LandingPage() {
     <>
       <NavbarComponentDefault />
       <BannerComponent pathDownload={pathDownload} action={() => {}} />
-      <CounterComponent />
+      {/* <CounterComponent /> */}
       <FiturComponent />
       <CallToActionComponent pathDownload={pathDownload} action={() => {}} />
       <ScreenshotComponent />
