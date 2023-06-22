@@ -15,7 +15,9 @@ import { CounterComponent } from "src/components/CounterComponent";
 import { useEffect, useState } from "react";
 
 export function LandingPage() {
-  const [pathDownload, setPathDownload] = useState("");
+  const [pathDownload, setPathDownload] = useState(
+    "https://drive.google.com/drive/folders/1IvYMA5an4Ok01vbjvVS8mBrMPDcqOXzg?usp=sharing"
+  );
 
   return (
     <>
