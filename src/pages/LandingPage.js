@@ -16,7 +16,7 @@ import { useEffect, useState } from "react";
 
 export function LandingPage() {
   const [pathDownload, setPathDownload] = useState(
-    "https://drive.google.com/drive/folders/1IvYMA5an4Ok01vbjvVS8mBrMPDcqOXzg?usp=sharing"
+    "https://drive.google.com/drive/folders/1Br1or410DSi7ZM3PYq7U5ySf-L427_De?usp=sharing"
   );
 
   return (

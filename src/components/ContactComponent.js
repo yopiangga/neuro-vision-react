@@ -81,7 +81,7 @@ export function ContactComponent() {
                 <FiMapPin size={36} />
               </div>
               <div>
-                <h2 className="text-xl font-medium mb-3">Stroke Vision</h2>
+                <h2 className="text-xl font-medium mb-3">Neutron Imager</h2>
                 <a
                   className="text-lg"
                   href="https://goo.gl/maps/rKmsvQXbLxtU36BRA"
