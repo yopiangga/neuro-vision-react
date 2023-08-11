@@ -9,7 +9,7 @@ import { onAuthStateChanged, getAuth } from "firebase/auth";
 import AuthRouterPage from "./router/AuthRouterPage";
 import UserRouterPage from "./router/UserRouterPage";
 import { Loader } from "./components/loader";
-const auth = getAuth(app);
+// const auth = getAuth(app);
 
 const queryClient = new QueryClient();
 const userServices = new UserServices();
@@ -33,20 +33,21 @@ function UserManager() {
   useEffect(() => {
     // Fetch for get data user from firebase & db
     // fetch();
+    setLoad(false);
   }, []);
 
-  async function fetch() {
-    onAuthStateChanged(auth, async function (users) {
-      if (users) {
-        const resUser = await userServices.getUser(users.email);
-        setUser(resUser);
-        setLoad(false);
-      } else {
-        setUser(null);
-        setLoad(false);
-      }
-    });
-  }
+  // async function fetch() {
+  //   onAuthStateChanged(auth, async function (users) {
+  //     if (users) {
+  //       const resUser = await userServices.getUser(users.email);
+  //       setUser(resUser);
+  //       setLoad(false);
+  //     } else {
+  //       setUser(null);
+  //       setLoad(false);
+  //     }
+  //   });
+  // }
 
   if (load) {
     return (
