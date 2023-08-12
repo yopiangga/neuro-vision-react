@@ -6,6 +6,7 @@ import { MainSection } from "src/pages/dashboard/main";
 import { RequestSection } from "src/pages/dashboard/request";
 import { PatientSection } from "src/pages/dashboard/patient";
 import { DoctorSection } from "src/pages/dashboard/doctor";
+import {DetailSection} from "../pages/dashboard/detail";
 
 export default function UserRouterPage() {
   return (
@@ -17,6 +18,7 @@ export default function UserRouterPage() {
           <Route path="/request" element={<RequestSection />} />
           <Route path="/patient" element={<PatientSection />} />
           <Route path="/doctor" element={<DoctorSection />} />
+          <Route path="/detail" element={<DetailSection />} />
 
           <Route path="/hello" element={<HelloPage />} />
           <Route path="*" element={<HelloPage />} />
