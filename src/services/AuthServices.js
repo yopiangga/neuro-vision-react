@@ -16,16 +16,17 @@ export class AuthServices {
       const res = await signInWithEmailAndPassword(auth, email, password);
       return res;
     } catch (err) {
+      console.log(err);
       switch (err.code) {
         case "auth/user-not-found":
           return "Email tidak ditemukan";
-          break;
+          
         case "auth/wrong-password":
           return "Password salah";
-          break;
+          
         default:
           return "Terjadi kesalahan, silahkan coba lagi";
-          break;
+          
       }
     }
   }
