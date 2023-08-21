@@ -20,19 +20,17 @@ export class AuthServices {
       switch (err.code) {
         case "auth/user-not-found":
           return "Email tidak ditemukan";
-          
+
         case "auth/wrong-password":
           return "Password salah";
-          
+
         default:
           return "Terjadi kesalahan, silahkan coba lagi";
-          
       }
     }
   }
 
   async register(email, password) {
-    console.log(email, password);
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       return res;
