@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import bannerLogin from "src/assets/img/banner-login.png";
 import { AuthServices } from "src/services/AuthServices";
 
 export function SignInPage() {
+  const navigate = useNavigate();
   const authServices = new AuthServices();
   const [user, setUser] = useState({
     email: "",
@@ -16,7 +18,7 @@ export function SignInPage() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    authServices.login(user);
+    authServices.login(user).then((value) => navigate('/'));
   }
 
   return (

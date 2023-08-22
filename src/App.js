@@ -40,8 +40,8 @@ function UserManager() {
   async function fetch() {
     onAuthStateChanged(auth, async function (users) {
       if (users) {
-        const resUser = await userServices.getUser(users.email);
-        setUser(resUser);
+        //const resUser = await userServices.getUser(users.email);
+        setUser({role: "operator"});
         setLoad(false);
       } else {
         setUser(null);

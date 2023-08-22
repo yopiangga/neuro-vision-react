@@ -1,6 +1,17 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+import { AuthServices } from "src/services/AuthServices";
 
 export function SideBar() {
+  const navigate = useNavigate();
+  const authServices = new AuthServices();  
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    authServices.logout().then(() => navigate('/sign-in'));
+  }
+
   return (
     <aside
       id="default-sidebar"
@@ -63,19 +74,8 @@ export function SideBar() {
 
         <ul className="space-y-2 font-normal text-sm p-3">
           <li>
-            <Link
-              to="/settings"
-              className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100 dark:hover:bg-gray-300 group"
-            >
-              <i className="fa-solid fa-gear group-hover:text-violet-500"></i>
-              <span className="flex-1 ml-3 group-hover:text-violet-500 whitespace-nowrap">
-                Settings
-              </span>
-            </Link>
-          </li>
-          <li>
             <button
-              onClick={() => {}}
+              onClick={handleSubmit}
               className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100 dark:hover:bg-gray-300 group"
             >
               <i className="fa-solid fa-right-from-bracket group-hover:text-violet-500"></i>

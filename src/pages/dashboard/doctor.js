@@ -6,7 +6,7 @@ export function DoctorSection() {
           <p className="font-bold mb-5">
               Hey Operator -{" "}
               <span className="text-gray-500 font-normal">
-          here’s what’s happening with your patient today
+          here's what's happening with your patient today
         </span>
           </p>
           <TableDoctors />
