@@ -45,7 +45,7 @@ export class OperatorServices {
         const docRef = doc(db, 'promise', id);
         try {
             await updateDoc(docRef, {
-                state: 'Completed'
+                status: 'accepted'
             });
         } catch(e) {
             throw e;
@@ -57,7 +57,7 @@ export class OperatorServices {
         const docRef = doc(db, 'promise', id);
         try {
             await updateDoc(docRef, {
-                state: 'Rejected'
+                status: 'rejected'
             });
         } catch(e) {
             throw e;
@@ -91,7 +91,8 @@ export class OperatorServices {
         try {
             await updateDoc(docRef, {
                 diagnose: {
-                    ai: diagnose
+                    ai: diagnose,
+                    doctor: ""
                 },
                 image_scan: `https://firebasestorage.googleapis.com/v0/b/naraya-hack.appspot.com/o/3.jpg?alt=media&token=${path}`,
                 status: 'uploaded'

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { StatusView } from "./table-request";
 
 export  function Table({promise}){
     return (
@@ -20,38 +21,7 @@ export  function Table({promise}){
 
               return (
                 <tr className="bg-white border-b dark:bg-white dark:border-gray-300 hover:bg-gray-200">
-                  <th scope="row" className="px-6 py-4">
-                    <div
-                      className={`py-1 ${
-                        item.state == "Completed"
-                          ? "bg-green-200"
-                          : item.state == "Rejected"
-                          ? "bg-red-200"
-                          : "bg-yellow-200"
-                      } w-full text-center rounded-full flex space-x-2 items-center justify-center`}
-                    >
-                      <div
-                        className={`p-1 ${
-                          item.state == "Completed"
-                            ? "bg-green-800"
-                            : item.state == "Rejected"
-                            ? "bg-red-800"
-                            : "bg-yellow-800"
-                        } rounded-full`}
-                      ></div>
-                      <span
-                        className={`${
-                          item.state == "Completed"
-                            ? "text-green-800"
-                            : item.state == "Rejected"
-                            ? "text-red-800"
-                            : "text-yellow-800"
-                        } font-normal`}
-                      >
-                        {item.state}
-                      </span>
-                    </div>
-                  </th>
+                  <StatusView status={item.status}/>
                   <td className="px-6 py-4">
                     <p className="font-bold">{item.patient.fullname}</p>
                   </td>

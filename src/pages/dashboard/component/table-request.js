@@ -18,15 +18,17 @@ export function TableRequest() {
   }
 
   function handleAccept(id) {
-    operatorService.acceptPromise(id)
-        .then((value) => fetch())
-        .catch((e) => alert(e));
+    operatorService
+      .acceptPromise(id)
+      .then((value) => fetch())
+      .catch((e) => alert(e));
   }
 
   function handleReject(id) {
-    operatorService.rejectPromise(id)
-        .then((value) => fetch())
-        .catch((e) => alert(e));
+    operatorService
+      .rejectPromise(id)
+      .then((value) => fetch())
+      .catch((e) => alert(e));
   }
 
   return (
@@ -46,38 +48,7 @@ export function TableRequest() {
 
               return (
                 <tr className="bg-white border-b dark:bg-white dark:border-gray-300 hover:bg-gray-200">
-                  <th scope="row" className="px-6 py-4">
-                    <div
-                      className={`py-1 ${
-                        item.state == "Completed"
-                          ? "bg-green-200"
-                          : item.state == "Rejected"
-                          ? "bg-red-200"
-                          : "bg-yellow-200"
-                      } w-full text-center rounded-full flex space-x-2 items-center justify-center`}
-                    >
-                      <div
-                        className={`p-1 ${
-                          item.state == "Completed"
-                            ? "bg-green-800"
-                            : item.state == "Rejected"
-                            ? "bg-red-800"
-                            : "bg-yellow-800"
-                        } rounded-full`}
-                      ></div>
-                      <span
-                        className={`${
-                          item.state == "Completed"
-                            ? "text-green-800"
-                            : item.state == "Rejected"
-                            ? "text-red-800"
-                            : "text-yellow-800"
-                        } font-normal`}
-                      >
-                        {item.state}
-                      </span>
-                    </div>
-                  </th>
+                  <StatusView status={item.status}/>
                   <td className="px-6 py-4">
                     <p className="font-bold">{item.patient.fullname}</p>
                   </td>
@@ -99,16 +70,32 @@ export function TableRequest() {
                   </td>
                   <td className="px-6 py-4 text-right text-gray-500">
                     <div className="flex gap-x-2">
-                      {item.state == "Pending" ?<>
-                      <button className="px-4 py-1 bg-green-700 rounded-full text-white font-semibold" onClick={(e)=>handleAccept(item.id)}>
-                        <FaCheckCircle />
-                      </button>
-                      <button className="px-4 py-1 bg-red-500 rounded-full text-white"  onClick={(e)=>handleReject(item.id)}>
-                        <FaTrashAlt />
-                      </button></> : <></>}
-                      <Link to={`/detail/${item.id}`} className="px-4 py-1 bg-violet-500 rounded-full text-white font-semibold">
+                      {item.status == "pending" ? (
+                        <>
+                          <button
+                            className="px-4 py-1 bg-green-700 rounded-full text-white font-semibold"
+                            onClick={(e) => handleAccept(item.id)}
+                          >
+                            <FaCheckCircle />
+                          </button>
+                          <button
+                            className="px-4 py-1 bg-red-500 rounded-full text-white"
+                            onClick={(e) => handleReject(item.id)}
+                          >
+                            <FaTrashAlt />
+                          </button>
+                        </>
+                      ) : (
+                        <></>
+                      )}
+                      {item.status == "accepted" ? (
+                        <Link
+                        to={`/detail/${item.id}`}
+                        className="px-4 py-1 bg-violet-500 rounded-full text-white font-semibold"
+                      >
                         <FaEye />
                       </Link>
+                      ):<></>}
                     </div>
                   </td>
                 </tr>
@@ -118,5 +105,40 @@ export function TableRequest() {
         </table>
       </div>
     </div>
+  );
+}
+
+export function StatusView({status}) {
+  let background = "yellow";
+  let content = "";
+  if (status == "pending") {
+    content = "Pending";
+  } else if (status == "uploaded") {
+    content = "Uploaded";
+  } else if (status == "accepted") {
+    content = "Ready";
+  } else if (status == "done") {
+    content = "Completed";
+    background = "green";
+  } else {
+    content = "Rejected";
+    background = "red";
+  }
+
+  return (
+    <th scope="row" className="px-6 py-4">
+      <div
+        className={`py-1 bg-${background}-200 w-full text-center rounded-full flex space-x-2 items-center justify-center`}
+      >
+        <div
+          className={`p-1 bg-${background}-800 rounded-full`}
+        ></div>
+        <span
+          className={`text-${background}-800 font-normal`}
+        >
+          {content}
+        </span>
+      </div>
+    </th>
   );
 }
