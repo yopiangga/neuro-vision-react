@@ -9,11 +9,13 @@ import { onAuthStateChanged, getAuth } from "firebase/auth";
 import AuthRouterPage from "./router/AuthRouterPage";
 import UserRouterPage from "./router/UserRouterPage";
 import { Loader } from "./components/loader";
+import { OperatorServices } from "./services/OperatorServices";
 
 const auth = getAuth(app);
 
 const queryClient = new QueryClient();
 const userServices = new UserServices();
+const operatorServices = new OperatorServices();
 
 function App() {
   return (
@@ -40,8 +42,8 @@ function UserManager() {
   async function fetch() {
     onAuthStateChanged(auth, async function (users) {
       if (users) {
-        //const resUser = await userServices.getUser(users.email);
-        setUser({role: "operator"});
+        const resUser = await operatorServices.getUserByEmail(users.email);
+        setUser(resUser);
         setLoad(false);
       } else {
         setUser(null);

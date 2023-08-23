@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaCheckCircle, FaEye, FaTrash, FaTrashAlt } from "react-icons/fa";
-import { FiDelete } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import { OperatorServices } from "src/services/OperatorServices";
 
 export function TableRequest() {
@@ -106,9 +106,9 @@ export function TableRequest() {
                       <button className="px-4 py-1 bg-red-500 rounded-full text-white"  onClick={(e)=>handleReject(item.id)}>
                         <FaTrashAlt />
                       </button></> : <></>}
-                      <button className="px-4 py-1 bg-violet-500 rounded-full text-white font-semibold">
+                      <Link to={`/detail/${item.id}`} className="px-4 py-1 bg-violet-500 rounded-full text-white font-semibold">
                         <FaEye />
-                      </button>
+                      </Link>
                     </div>
                   </td>
                 </tr>

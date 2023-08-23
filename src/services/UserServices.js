@@ -2,6 +2,7 @@ import axios from "axios";
 import baseUrl from "src/config/Url";
 
 export class UserServices {
+  
   async getUser(value) {
     const res = await axios.get(`${baseUrl}/user?email=${value}`);
     return res.data;

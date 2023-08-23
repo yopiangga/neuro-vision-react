@@ -18,7 +18,7 @@ export default function UserRouterPage() {
           <Route path="/request" element={<RequestSection />} />
           <Route path="/patient" element={<PatientSection />} />
           <Route path="/doctor" element={<DoctorSection />} />
-          <Route path="/detail" element={<DetailSection />} />
+          <Route path="/detail/:id" element={<DetailSection />} />
 
           <Route path="/hello" element={<HelloPage />} />
           <Route path="*" element={<HelloPage />} />
