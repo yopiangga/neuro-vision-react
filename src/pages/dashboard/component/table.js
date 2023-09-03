@@ -16,8 +16,8 @@ export  function Table({promise}){
                     <tbody>
                         
                     {promise.map((item, index) => {
-              const words = item.time.split(" ");
-              const date = new Date(words[0]);
+              const words = item.time != "" ? item.time.split(" ") : "-";
+              const date = new Date();
 
               return (
                 <tr className="bg-white border-b dark:bg-white dark:border-gray-300 hover:bg-gray-200">
@@ -26,7 +26,7 @@ export  function Table({promise}){
                     <p className="font-bold">{item.patient.fullname}</p>
                   </td>
                   <td className="px-6 py-4">
-                    <p className="font-bold">{words[1].substring(0, 5)}</p>
+                    <p className="font-bold">{words != "-" ? words[1].substring(0, 5) : "-"}</p>
                     <p className="font-normal text-gray-400">
                       {date.toDateString()}
                     </p>

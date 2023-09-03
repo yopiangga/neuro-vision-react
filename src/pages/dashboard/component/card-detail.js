@@ -3,6 +3,9 @@ import { UserContext } from "src/context/UserContext";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { OperatorServices } from "src/services/OperatorServices";
 import { useNavigate } from "react-router-dom";
+// import { format } from "date-fns";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export function CardDetail({data}){
     const { user, setUser } = useContext(UserContext);
@@ -17,17 +20,21 @@ export function CardDetail({data}){
     function handleSubmit(e) {
         e.preventDefault();
         const storage = getStorage();
-    const storageRef = ref(storage, `${data.id}/${Math.random().toString(36).substring(2,7)}`);
+        const storageRef = ref(storage, `${data.id}/${Math.random().toString(36).substring(2,7)}`);
 
-    // 'file' comes from the Blob or File API
-    uploadBytes(storageRef, file).then((snapshot) => {
+        // 'file' comes from the Blob or File API
+        uploadBytes(storageRef, file).then((snapshot) => {
         //snapshot.ref.fullPath
-        operatorServices.uploadCtScan(data.id, snapshot.ref.fullPath, arr[index]).then(
-            (value) => navigate(-1)
+            operatorServices.uploadCtScan(data.id, snapshot.ref.fullPath, arr[index]).then(
+                (value) => navigate(-1)
             )
-    });
-
+        });
     }
+
+    const doctors = ["dr. Ilham Adi Sr.P", "dr. Dimas Fahrul Sr.P"];
+    const [selectedDoctor, setSelectedDoctor] = useState(doctors[0]);
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [note, setNote] = useState("");
 
     return (
         <form action="">
@@ -35,11 +42,33 @@ export function CardDetail({data}){
                 <div className="w-full">
                     <div className="mb-5">
                         <label  className="block mb-2 text-sm font-semibold">Doctor</label>
-                        <input  type="text" value={data.doctor.fullname} className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-2.5"/>
+                        <select
+                            value={selectedDoctor}
+                            onChange={(e) => setSelectedDoctor(e.target.value)}
+                            className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-2.5"
+                        >
+                            {doctors.map((doctor) => (
+                            <option key={doctor} value={doctor}>
+                                {doctor}
+                            </option>
+                            ))}
+                        </select>
                     </div>
                     <div className="mb-5">
                         <label  className="block mb-2 text-sm font-semibold">Time</label>
-                        <input type="text" value={data.time} className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-2.5"/>
+                        <div className="flex">
+                            <DatePicker
+                                selected={selectedDate}
+                                onChange={(date) => setSelectedDate(date)}
+                                showTimeSelect
+                                dateFormat="yyyy-MM-dd HH:mm:ss"
+                                timeFormat="HH:mm:ss"
+                                timeIntervals={60}
+                                timeCaption="Time"
+                                className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full grow px-2.5 py-2.5"
+                                style = {{ width: "100%" }}
+                            />
+                        </div>
                     </div>
                     <div className="mb-5">
                         <label  className="block mb-2 text-sm font-semibold">Email</label>
@@ -73,6 +102,10 @@ export function CardDetail({data}){
                     <div className="mb-5">
                         <label  className="block mb-2 text-sm font-semibold">Email</label>
                         <input type="email" value={user.email} className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-2.5"/>
+                    </div>
+                    <div className="mb-5">
+                        <label  className="block mb-2 text-sm font-semibold">Note</label>
+                        <textarea onChange={(note) => setNote(note)} className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-2.5"/>
                     </div>
                     <div className="mb-5">
                         <label  className="block mb-2 text-sm font-semibold">Pick Image (DICOM)</label>

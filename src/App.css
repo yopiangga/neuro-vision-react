@@ -21,3 +21,12 @@ body {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
+
+.calendar {
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+.react-datepicker-wrapper {
+    width: 100%;
+}
