@@ -34,7 +34,7 @@ export function NavbarComponentDefault() {
       <div className="w-11/12 h-full flex justify-between items-center text-white">
         <div className="logo">
           <h1 className="text-xl font-bold">
-            Neutron Imager | Aplikasi Seluler
+            Neuro Vision | Aplikasi Seluler
           </h1>
         </div>
         <div className="menu lg:block hidden">

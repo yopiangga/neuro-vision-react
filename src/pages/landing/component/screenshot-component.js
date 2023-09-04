@@ -51,7 +51,7 @@ export function ScreenshotComponent() {
         <div className="header-title text-center">
           <h2 className="text-4xl font-medium">Layar Aplikasi</h2>
           <p className="text-sm mt-5 text-gray-600">
-            Anda dapat melihat tampilan aplikasi Neutron Imager di sini. Sangat
+            Anda dapat melihat tampilan aplikasi Neuro Vision di sini. Sangat
             mudah digunakan!
           </p>
         </div>

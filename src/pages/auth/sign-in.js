@@ -28,7 +28,7 @@ export function SignInPage() {
         <div className="max-w-lg">
           <h1 className="text-6xl font-bold text-white">
             Welcome to <br />
-            Neutron Imager
+            Neuro Vision
           </h1>
           <p className="font-thin text-white mt-5">
             Clarity gives you the blocks & components you need to create a truly

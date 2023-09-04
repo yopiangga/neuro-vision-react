@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/neutron-imager.iml" filepath="$PROJECT_DIR$/.idea/neutron-imager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/neuro-vision.iml" filepath="$PROJECT_DIR$/.idea/neuro-vision.iml" />
     </modules>
   </component>
 </project>

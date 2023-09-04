@@ -13,7 +13,7 @@ export function CallToActionComponent({ pathDownload, action }) {
       <div className="w-10/12 pt-16 pb-10 grid lg:grid-cols-2 grid-cols-1">
         <div className="text">
           <h2 className="text-4xl font-medium">
-            Apa yang dapat dilakukan oleh Neutron Imager?
+            Apa yang dapat dilakukan oleh Neuro Vision?
           </h2>
           <p className="mt-7 text-sm text-slate-600">
             Aplikasi teknologi berbasis Artificial Intelligence (AI) yang dapat
