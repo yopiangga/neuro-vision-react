@@ -86,7 +86,7 @@ export class OperatorServices {
         return data[0];
     }
 
-    async uploadCtScan(id, path, diagnose) {
+    async uploadCtScan(id, path, diagnose, doctor, note, time) {
         const docRef = doc(db, 'promise', id);
         try {
             await updateDoc(docRef, {
@@ -94,7 +94,10 @@ export class OperatorServices {
                     ai: diagnose,
                     doctor: ""
                 },
-                image_scan: `https://firebasestorage.googleapis.com/v0/b/naraya-hack.appspot.com/o/3.jpg?alt=media&token=${path}`,
+                doctor: doctor,
+                note_admin: note,
+                time: time,
+                image_scan: `http://34.125.118.59:5000/ct-scan/download?file-path=/home/farhanroy120/project/${path}`,
                 status: 'uploaded'
             });
         } catch(e) {

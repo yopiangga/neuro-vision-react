@@ -3,6 +3,8 @@ import { UserContext } from "src/context/UserContext";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { OperatorServices } from "src/services/OperatorServices";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { Buffer } from "buffer";
 // import { format } from "date-fns";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -17,21 +19,45 @@ export function CardDetail({data}){
     const [file, setFile] = useState();
     const navigate = useNavigate();
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        const storage = getStorage();
-        const storageRef = ref(storage, `${data.id}/${Math.random().toString(36).substring(2,7)}`);
+        const imagePath = await axios.get("http://34.125.118.59:5000/ct-scan"); 
 
-        // 'file' comes from the Blob or File API
-        uploadBytes(storageRef, file).then((snapshot) => {
-        //snapshot.ref.fullPath
-            operatorServices.uploadCtScan(data.id, snapshot.ref.fullPath, arr[index]).then(
-                (value) => navigate(-1)
-            )
-        });
+        const getImage = await axios.get(`http://34.125.118.59:5000/ct-scan/download?file-path=/home/farhanroy120/project/${imagePath.data[17]}`, { responseType: 'blob' })
+
+
+        //const base64Image = `data:image/jpeg;base64,${Buffer.from(getImage.data).toString('base64')}`;
+
+        const base64Image = await imageToBase64(getImage.data);
+        // console.log(`data:image/jpeg;base64,${base64Image}`)
+
+        const generateAi = await axios.post("http://34.125.118.59:5000/prediction", {'image': base64Image}); 
+
+        console.log(generateAi.data);
+
+        var formatedDate = selectedDate.toISOString().split("T");
+        operatorServices.uploadCtScan(data.id, imagePath[17], generateAi.data, selectedDoctor, note, `${formatedDate[0]} ${formatedDate[1]}`).then(
+            (value) => navigate(-1)
+        )
     }
 
-    const doctors = ["dr. Ilham Adi Sr.P", "dr. Dimas Fahrul Sr.P"];
+    async function  imageToBase64(image) {
+        const reader = new FileReader();
+        reader.readAsDataURL(image);
+        const data= await new Promise((resolve, reject) => {
+       
+          reader.onload = () => resolve(reader.result);
+       
+          reader.onerror = error => reject(error);
+       
+         });
+       return data;
+       }
+
+    
+
+
+    const doctors = data.hospital.doctors;
     const [selectedDoctor, setSelectedDoctor] = useState(doctors[0]);
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [note, setNote] = useState("");
@@ -44,12 +70,16 @@ export function CardDetail({data}){
                         <label  className="block mb-2 text-sm font-semibold">Doctor</label>
                         <select
                             value={selectedDoctor}
-                            onChange={(e) => setSelectedDoctor(e.target.value)}
+                            onChange={(e) => {
+                            
+                                setSelectedDoctor(e.target.value)
+                            }}
                             className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-2.5"
                         >
-                            {doctors.map((doctor) => (
-                            <option key={doctor} value={doctor}>
-                                {doctor}
+                            {doctors.map((element) => (
+                            
+                            <option key={element} value={element}>
+                                {element.fullname}
                             </option>
                             ))}
                         </select>
@@ -105,12 +135,12 @@ export function CardDetail({data}){
                     </div>
                     <div className="mb-5">
                         <label  className="block mb-2 text-sm font-semibold">Note</label>
-                        <textarea onChange={(note) => setNote(note)} className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-2.5"/>
+                        <textarea onChange={(e) => {
+                            console.log(e.target.value);
+                            setNote(e.target.value)
+                        }} className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-2.5"/>
                     </div>
-                    <div className="mb-5">
-                        <label  className="block mb-2 text-sm font-semibold">Pick Image (DICOM)</label>
-                        <input onChange={(e) => setFile(e.target.files)} type="file" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-2.5"/>
-                    </div>
+                
                     
                     <button type="submit" onClick={handleSubmit} className="bg-violet-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-2.5 text-white font-semibold">
                         Send result
