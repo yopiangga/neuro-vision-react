@@ -36,7 +36,7 @@ export function CardDetail({data}){
         console.log(generateAi.data);
 
         var formatedDate = selectedDate.toISOString().split("T");
-        operatorServices.uploadCtScan(data.id, imagePath[17], generateAi.data, selectedDoctor, note, `${formatedDate[0]} ${formatedDate[1]}`).then(
+        operatorServices.uploadCtScan(data.id, imagePath.data[17], generateAi.data, selectedDoctor, note, `${formatedDate[0]} ${formatedDate[1]}`).then(
             (value) => navigate(-1)
         )
     }
