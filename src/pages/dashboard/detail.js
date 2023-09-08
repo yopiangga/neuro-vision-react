@@ -1,9 +1,10 @@
 import { useParams } from "react-router-dom";
 
-import {CardDetail} from "./component/card-detail";
+import {CardDetail, CardSyncronize} from "./component/card-detail";
 import { useState, useEffect } from "react";
 
 import { OperatorServices } from "src/services/OperatorServices";
+import { da } from "date-fns/locale";
 
 export function DetailSection(){
     const {id} = useParams();
@@ -30,7 +31,7 @@ export function DetailSection(){
               here's what's happening with your patient today
             </span>
                 </p>
-                <CardDetail data={data}/>
+                {data.status == "accepted" ? <CardDetail data={data}/> : <CardSyncronize data={data}/>}
             </div>
         );
     } else {

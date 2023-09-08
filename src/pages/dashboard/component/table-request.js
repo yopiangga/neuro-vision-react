@@ -88,7 +88,7 @@ export function TableRequest() {
                       ) : (
                         <></>
                       )}
-                      {item.status == "accepted" ? (
+                      {item.status == "accepted" || item.status == "ongoing" ? (
                         <Link
                         to={`/detail/${item.id}`}
                         className="px-4 py-1 bg-violet-500 rounded-full text-white font-semibold"
@@ -114,9 +114,12 @@ export function StatusView({status}) {
   if (status == "pending") {
     content = "Pending";
   } else if (status == "uploaded") {
-    content = "Uploaded";
+    content = "Syncronized";
+    background = "blue";
   } else if (status == "accepted") {
-    content = "Ready";
+    content = "Accepted";
+  } else if (status == "ongoing") {
+    content = "On Going";
   } else if (status == "done") {
     content = "Completed";
     background = "green";
