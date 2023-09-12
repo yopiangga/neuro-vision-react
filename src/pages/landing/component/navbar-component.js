@@ -27,11 +27,6 @@ export function NavbarComponentDefault() {
       path: "#kontak",
       title: "Kontak",
     },
-    {
-      id: "",
-      path: "/sign-in",
-      title: "Masuk",
-    },
   ];
 
   return (
@@ -43,7 +38,7 @@ export function NavbarComponentDefault() {
           </h1>
         </div>
         <div className="menu lg:block hidden">
-          <ul className="uppercase flex text-sm gap-8 font-medium">
+          <ul className="uppercase flex text-sm gap-8 font-medium items-center">
             {link.map((el, idx) => {
               return (
                 <a className="uppercase" href={el.path}>
@@ -51,6 +46,10 @@ export function NavbarComponentDefault() {
                 </a>
               );
             })}
+
+        <a className="bg-white rounded-md py-3 px-8 w-fit text-slate-900 text-xs font-medium" href="/sign-in">
+                  <li>Masuk</li>
+                </a>
           </ul>
         </div>
       </div>
