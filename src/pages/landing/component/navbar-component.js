@@ -27,6 +27,11 @@ export function NavbarComponentDefault() {
       path: "#kontak",
       title: "Kontak",
     },
+    {
+      id: "",
+      path: "/sign-in",
+      title: "Masuk",
+    },
   ];
 
   return (
