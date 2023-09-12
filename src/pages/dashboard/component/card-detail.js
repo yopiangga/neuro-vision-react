@@ -289,7 +289,7 @@ function StatusAlert({ ctScan, promise, userPromise }) {
 
         const base64Image = await imageToBase64(getImage.data);
 
-    const generateAi = await axios.post("https://api.neutron-imager.tech/prediction", {'image': base64Image});
+    const generateAi = await axios.post("https://api.neutron-imager.tech/prediction", {'nik': promise.patient.nik});
 
     // console.log(generateAi.data);
         
