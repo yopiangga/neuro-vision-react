@@ -19,13 +19,13 @@ export function CardDetail({ data }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    // const imagePath = await axios.get("http://34.125.118.59:5000/ct-scan");
+    // const imagePath = await axios.get("https://api.neutron-imager.tech/ct-scan");
 
-    // const getImage = await axios.get(`http://34.125.118.59:5000/ct-scan/download?file-path=/home/farhanroy120/project/${imagePath.data[17]}`, { responseType: 'blob' })
+    // const getImage = await axios.get(`https://api.neutron-imager.tech/ct-scan/download?file-path=/home/farhanroy120/project/${imagePath.data[17]}`, { responseType: 'blob' })
 
     //const base64Image = await imageToBase64(getImage.data);
 
-    // const generateAi = await axios.post("http://34.125.118.59:5000/prediction", {'image': base64Image});
+    // const generateAi = await axios.post("https://api.neutron-imager.tech/prediction", {'image': base64Image});
 
     var formatedDate = selectedDate.toISOString().split("T");
     operatorServices
@@ -285,11 +285,11 @@ function StatusAlert({ ctScan, promise, userPromise }) {
     async function handleSubmit(e) {
         e.preventDefault();
 
-        const getImage = await axios.get(`http://34.125.118.59:5000/ct-scan/download?nik=${last.nik}&&time=${last.time}`,{ responseType: 'blob' });
+        const getImage = await axios.get(`https://api.neutron-imager.tech/ct-scan/download?nik=${last.nik}&&time=${last.time}`,{ responseType: 'blob' });
 
         const base64Image = await imageToBase64(getImage.data);
 
-    const generateAi = await axios.post("http://34.125.118.59:5000/prediction", {'image': base64Image});
+    const generateAi = await axios.post("https://api.neutron-imager.tech/prediction", {'image': base64Image});
 
     // console.log(generateAi.data);
         

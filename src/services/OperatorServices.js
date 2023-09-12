@@ -94,7 +94,7 @@ export class OperatorServices {
                 doctor: doctor,
                 note_admin: note,
                 time: time,
-                //image_scan: `http://34.125.118.59:5000/ct-scan/download?file-path=/home/farhanroy120/project/${path}`,
+                //image_scan: `https://api.neutron-imager.tech/ct-scan/download?file-path=/home/farhanroy120/project/${path}`,
                 status: 'ongoing'
             });
         } catch(e) {
@@ -111,7 +111,7 @@ export class OperatorServices {
                     ai: ai,
                     doctor: ""
                 },
-                image_scan: `http://34.125.118.59:5000/ct-scan/download?nik=${nik}&&time=${time}`,
+                image_scan: `https://api.neutron-imager.tech/ct-scan/download?nik=${nik}&&time=${time}`,
                 status: 'uploaded'
             });
         } catch(e) {
@@ -134,7 +134,7 @@ export class OperatorServices {
 
     async getCtScan(id) {
         try {
-            const res = await axios.get(`http://34.125.118.59:5000/ct-scan?nik=${id}`);
+            const res = await axios.get(`https://api.neutron-imager.tech/ct-scan?nik=${id}`);
             return res.data;
         } catch(e) {
             throw e
